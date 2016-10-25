@@ -9,7 +9,7 @@
 * Licensed under the MIT license
 */
 ;(function($) {
-	$.fn.rwdImageMaps = function() {
+	$.fn.rwdImageMaps = function(callback) {
 		var $img = this;
 
 		var rwdImageMap = function() {
@@ -59,6 +59,9 @@
 					});
 				}).attr('src', $that.attr('src'));
 			});
+			if (typeof callback == 'function') {
+				callback.call(this);
+			}
 		};
 		$(window).resize(rwdImageMap).trigger('resize');
 
